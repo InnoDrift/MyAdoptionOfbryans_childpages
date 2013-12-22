@@ -122,7 +122,7 @@ function gallery_childpages_shortcode($attr)
 
 			//Store the page title formatted in HTML in case we need it
 			$the_page_title = get_the_title($thispage);
-			$the_title_html = "<" . $selector . " style='margin:" . $textmargin . ";display:block;float:left;height:". $selector_height . ";width:" . $selector_width . ";'>" . $the_page_title . "</" . $selector . ">";
+			$the_title_html = "<" . $selector . " class='bl'>" . $the_page_title . "</" . $selector . ">";
 
 			if($showimages)
 			{
@@ -136,7 +136,11 @@ function gallery_childpages_shortcode($attr)
 					
 					if($pagetitle)
 					{
+						$output .= "</a>";
+						$output .= "<div class='caption'>";
 						$output .= $the_title_html;
+						$output .= "</div>";
+
 				 	} 
 
 				} else //Look for attachments to the page and use one of those
@@ -174,7 +178,7 @@ function gallery_childpages_shortcode($attr)
 				$output .= "'>" .$the_title_html;
 			}//End if Show Images
 			
-			$output .= "</a>";
+			
 			$output .= "</div>";//thumbnail
 			$output .= "</div>";//col-lg-3
 		} //End For Each
