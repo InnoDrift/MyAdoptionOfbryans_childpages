@@ -116,7 +116,7 @@ function gallery_childpages_shortcode($attr)
 			
 			//Start building the link to the childpage
 			$the_pagelink = get_permalink($thispage);
-			$output .= "<div class='col-lg-3'>";
+			$output .= "<div class='col-lg-3 col-md-3 col-sm-6'>";
 			$output .= "<div class='thumbnail'>";
 			//$output .= "<a href='" . $the_pagelink . "' class='gallery_children" . $id . ">";
 
@@ -137,7 +137,6 @@ function gallery_childpages_shortcode($attr)
 					
 					if($pagetitle)
 					{
-						//$output .= "</a>";
 						$output .= "<a href='" . $the_pagelink . "' class='gallery_children" . $id . ">";
 						$output .= "<div class='caption'>";
 						$output .= $the_title_html;
@@ -180,11 +179,10 @@ function gallery_childpages_shortcode($attr)
 			{
 				$output .= "'>" .$the_title_html;
 			}//End if Show Images
-			$output .= "</div><!--class=thumbnail-->";//thumbnail
-			$output .= "</div><!--thumbnail-->";//col-lg-3
+			//$output .= "</div><!--class=thumbnail-->";//thumbnail
+			$output .= "</div><!--class=col-lg-3-->";//col-lg-3
 		} //End For Each
 		$output .= "</div>";//row
-		
 	} //End check for output
 	return $output;
 } //End function
