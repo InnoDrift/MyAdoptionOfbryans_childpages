@@ -52,7 +52,7 @@ function gallery_childpages_shortcode($attr)
 		'style'		=> '',
 		'include'    => '',
 		'pagetitle'  => false,
-		'selector'   => 'h2',
+		'selector'   => 'h3',
 		'selector_height' => '30px',
 		'selector_width' => '100%',
 		'selector_padding' => '',
@@ -118,11 +118,11 @@ function gallery_childpages_shortcode($attr)
 			$the_pagelink = get_permalink($thispage);
 			$output .= "<div class='col-lg-3'>";
 			$output .= "<div class='thumbnail'>";
-			$output .= "<a href='" . $the_pagelink . "' class='gallery_children" . $id . " gallery_children " . $style . "' style='overflow:hidden;text-align:" . $text_align . ";height:" . $height . "px;display:inline-block;" . $width;
+			//$output .= "<a href='" . $the_pagelink . "' class='gallery_children" . $id . ">";
 
 			//Store the page title formatted in HTML in case we need it
 			$the_page_title = get_the_title($thispage);
-			$the_title_html = "<" . $selector . " class='bl'>" . $the_page_title . "</" . $selector . ">";
+			$the_title_html = "<" . $selector . " class='bl text-center'>" . $the_page_title . "</" . $selector . ">";
 
 			if($showimages)
 			{
@@ -132,14 +132,17 @@ function gallery_childpages_shortcode($attr)
 				if($feat_image)
 				{
 					$feat_url = $feat_image[0];
-					$output .= ";background-image: url(\"" . $feat_url . "\");background-position:center;' alt='{$the_page_title}' title='{$the_page_title}'>";
+					//$output .= ";background-image: url(\"" . $feat_url . "\");background-position:center;' alt='{$the_page_title}' title='{$the_page_title}'>";
+					$output .= "<img src='" . $feat_url . "' class='img-responsive'; alt='{$the_page_title}' />";
 					
 					if($pagetitle)
 					{
-						$output .= "</a>";
+						//$output .= "</a>";
+						$output .= "<a href='" . $the_pagelink . "' class='gallery_children" . $id . ">";
 						$output .= "<div class='caption'>";
 						$output .= $the_title_html;
-						$output .= "</div>";
+						$output .= "</div><!--class=caption-->";
+						$output .= "</a>";
 
 				 	} 
 
@@ -177,10 +180,8 @@ function gallery_childpages_shortcode($attr)
 			{
 				$output .= "'>" .$the_title_html;
 			}//End if Show Images
-			
-			
-			$output .= "</div>";//thumbnail
-			$output .= "</div>";//col-lg-3
+			$output .= "</div><!--class=thumbnail-->";//thumbnail
+			$output .= "</div><!--thumbnail-->";//col-lg-3
 		} //End For Each
 		$output .= "</div>";//row
 		
